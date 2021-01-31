@@ -1,5 +1,5 @@
 function calc() {
-    const result = document.querySelector('.calculating__result span');
+    const result = document.querySelector('.calculating__result span'); //выбрали результат
 
     let sex, height, weight, age, ratio;
 
@@ -7,17 +7,17 @@ function calc() {
         sex = localStorage.getItem('sex');
     } else {
         sex = 'female';
-        localStorage.setItem('sex', 'female');
+        localStorage.setItem('sex', 'female');  // получили из локалки и записали в переменную
     }
 
     if (localStorage.getItem('ratio')) {
         ratio = localStorage.getItem('ratio');
     } else {
         ratio = 'ratio';
-        localStorage.setItem('ratio', '1.375');
+        localStorage.setItem('ratio', '1.375'); // получили из локалки и записали в переменную
     }
 
-    function initLocalSetting(selector, activeClass) {
+    function initLocalSetting(selector, activeClass) { //Инициализируем локалку с параметрами
         const elements = document.querySelectorAll(selector);
 
         elements.forEach(elem => {
@@ -32,7 +32,7 @@ function calc() {
     }
 
     initLocalSetting('#gender div', 'calculating__choose-item_active');
-    initLocalSetting('.calculating__choose_big div', 'calculating__choose-item_active');
+    initLocalSetting('.calculating__choose_big div', 'calculating__choose-item_active'); //инициализируем и закидываем
 
     function calcTotal() {
         if (!sex || !height || !weight || !age || !ratio) {
@@ -47,7 +47,7 @@ function calc() {
         }
     }
 
-    calcTotal();
+    calcTotal(); //считает калории
 
     function getStaticInformation(selector, activeClass) {
         const elements = document.querySelectorAll(selector);
@@ -109,4 +109,4 @@ function calc() {
     getDynamicInformation('#age');
 }
 
-module.exports = calc;
+export default calc;
